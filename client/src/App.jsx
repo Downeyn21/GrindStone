@@ -1,17 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { address } from '../address'
 
 function App() {
+
+  async function fetchApi() {
+    const response = await fetch(`${address}`)
+    const result = await response.json()
+    console.log(result)
+  }
+
+  useEffect(() =>{
+    fetchApi()
+  },[])
+
   return (
     <>
-      <div >
-        <div>GrindStone</div>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
-      </div>
+        <h1 className='text-3xl'>GrindStone</h1>
     </>
   )
 }
